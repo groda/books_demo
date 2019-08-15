@@ -21,7 +21,6 @@ urlpatterns = [
     url(r'^(?P<pk>\d+)/delete/$', booksdemo.views.BookDelete, name='book_delete'),
     url(r'^(?P<pk>\d+)/update/$', booksdemo.views.BookUpdate, name='book_update'),
     url(r'^create/$', booksdemo.views.BookCreate, name='book_create'),
-    path('books/', include('booksdemo.urls')),
 ]
 
 
