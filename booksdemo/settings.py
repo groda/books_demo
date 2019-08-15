@@ -40,8 +40,9 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "rest_framework",
-    "booksdemo",
+    "booksdemo.apps.BooksdemoConfig",
 ]
+###     "booksdemo",
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",

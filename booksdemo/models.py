@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models.signals import post_save, post_init
 
 # Create your models here.
 class Greeting(models.Model):
@@ -16,7 +17,6 @@ class Book(models.Model):
         (PAPERBACK, 'Paperback'),
         (EBOOK, 'E-book'),
     )
-###    title = models.CharField(max_length=140, primary_key=True)
     title = models.CharField(max_length=140)
     author = models.CharField(max_length=100, blank=True)
     publication_date = models.DateField(null=True)
@@ -27,8 +27,7 @@ class Book(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        #return self.title
-        return '{} by {}'.format(self.title, self.body)
+        return '{} by {}'.format(self.title, self.author)
     class Meta:
         unique_together = ('title', 'author',)
 
