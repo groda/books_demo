@@ -23,9 +23,11 @@ class Book(models.Model):
     pages = models.IntegerField(blank=True, null=True)
     book_type = models.PositiveSmallIntegerField(choices=BOOK_TYPES)
     abstract = models.CharField(max_length=28000)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.title
+        #return self.title
+        return '{} by {}'.format(self.title, self.body)
     class Meta:
         unique_together = ('title', 'author',)
 
