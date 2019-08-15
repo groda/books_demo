@@ -4,3 +4,4 @@ django-heroku
 requests
 djangorestframework
 django-filter
+markdown
