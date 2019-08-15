@@ -14,13 +14,13 @@ import booksdemo.views
 
 
 urlpatterns = [
+    path("", booksdemo.views.index, name="index"),
     path("db/", booksdemo.views.db, name="db"),
     path("admin/", admin.site.urls),
     path(r'books', booksdemo.views.BookAPIView.as_view(), name='book-list'),
     path(r'words', booksdemo.views.WordAPIView.as_view(), name='word-list'),
 ]
 
-###    path("", booksdemo.views.index, name="index"),
 ###    path('view/<int:pk>',booksdemo.views.BookView.as_view(), name='book_view'),
 ###    path('new',booksdemo.views.BookCreate.as_view(), name='book_new'),
 ###    path('view/<int:pk>',booksdemo.views.BookView.as_view(), name='book_view'),

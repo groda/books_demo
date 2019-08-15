@@ -16,12 +16,12 @@ class Book(models.Model):
         (PAPERBACK, 'Paperback'),
         (EBOOK, 'E-book'),
     )
-    title = models.CharField(max_length=140)
-    author = models.CharField(max_length=30, blank=True)
+    title = models.CharField(max_length=140, primary_key=True)
+    author = models.CharField(max_length=100, blank=True)
     publication_date = models.DateField(null=True)
     pages = models.IntegerField(blank=True, null=True)
     book_type = models.PositiveSmallIntegerField(choices=BOOK_TYPES)
-    abstract = models.CharField(max_length=2800)
+    abstract = models.CharField(max_length=28000)
 
     def __str__(self):
         return self.title
