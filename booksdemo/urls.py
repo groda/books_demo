@@ -16,7 +16,8 @@ import booksdemo.views
 urlpatterns = [
     path("db/", booksdemo.views.db, name="db"),
     path("admin/", admin.site.urls),
-    path('',booksdemo.views.BookList.as_view(), name='book_list'),
+    path(r'books', booksdemo.views.BookAPIView.as_view(), name='book-list'),
+    path(r'words', booksdemo.views.WordAPIView.as_view(), name='word-list'),
 ]
 
 ###    path("", booksdemo.views.index, name="index"),
