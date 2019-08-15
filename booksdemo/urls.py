@@ -14,13 +14,16 @@ import booksdemo.views
 
 
 urlpatterns = [
-    path("", booksdemo.views.index, name="index"),
     path("db/", booksdemo.views.db, name="db"),
     path("admin/", admin.site.urls),
-    url(r'^$', booksdemo.views.BookList, name='book_list'),
-    url(r'^(?P<pk>\d+)/delete/$', booksdemo.views.BookDelete, name='book_delete'),
-    url(r'^(?P<pk>\d+)/update/$', booksdemo.views.BookUpdate, name='book_update'),
-    url(r'^create/$', booksdemo.views.BookCreate, name='book_create'),
+    path('',booksdemo.views.BookList.as_view(), name='book_list'),
 ]
+
+###    path("", booksdemo.views.index, name="index"),
+###    path('view/<int:pk>',booksdemo.views.BookView.as_view(), name='book_view'),
+###    path('new',booksdemo.views.BookCreate.as_view(), name='book_new'),
+###    path('view/<int:pk>',booksdemo.views.BookView.as_view(), name='book_view'),
+###    path('edit/<int:pk>',booksdemo.views.BookUpdate.as_view(), name='book_edit'),
+###    path('delete/<int:pk>',booksdemo.views.BookDelete.as_view(), name='book_delete'),
 
 
