@@ -23,6 +23,7 @@ class Book(models.Model):
     pages = models.IntegerField(blank=True, null=True)
     book_type = models.PositiveSmallIntegerField(choices=BOOK_TYPES)
     abstract = models.CharField(max_length=28000)
+    min_word_size = models.IntegerField(default=3)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
