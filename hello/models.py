@@ -5,6 +5,12 @@ class Greeting(models.Model):
     when = models.DateTimeField("date created", auto_now_add=True)
 
 class Book(models.Model):
+    HARDCOVER = 1
+    PAPERBACK = 2
+    EBOOK = 3
+    HARDCOVER = 1
+    PAPERBACK = 2
+    EBOOK = 3
     BOOK_TYPES = (
         (HARDCOVER, 'Hardcover'),
         (PAPERBACK, 'Paperback'),
