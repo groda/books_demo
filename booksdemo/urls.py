@@ -3,28 +3,20 @@ from django.conf.urls import url
 from django.contrib import admin
 admin.autodiscover()
 import booksdemo.views
+from rest_framework import routers
+from .views import BookViewSet
 
-# To add a new path, first import the app:
-# import blog
-#
-# Then add the new path:
-# path('blog/', blog.urls, name="blog")
-#
-# Learn more here: https://docs.djangoproject.com/en/2.1/topics/http/urls/
-
+router = routers.DefaultRouter()
+router.register(r'books', BookViewSet)
 
 urlpatterns = [
     path("", booksdemo.views.index, name="index"),
     path("db/", booksdemo.views.db, name="db"),
-    path("admin/", admin.site.urls),
-    path(r'books', booksdemo.views.BookAPIView.as_view(), name='book-list'),
+    #path("admin/", admin.site.urls),
+    url(r'^admin/', admin.site.urls),
+    url(r'^api/', include(router.urls)),
+    url(r'^books/$', booksdemo.views.books, name='books'),
+    #path(r'books', booksdemo.views.BookAPIView.as_view(), name='book-list'),
     path(r'words', booksdemo.views.WordAPIView.as_view(), name='word-list'),
 ]
-
-###    path('view/<int:pk>',booksdemo.views.BookView.as_view(), name='book_view'),
-###    path('new',booksdemo.views.BookCreate.as_view(), name='book_new'),
-###    path('view/<int:pk>',booksdemo.views.BookView.as_view(), name='book_view'),
-###    path('edit/<int:pk>',booksdemo.views.BookUpdate.as_view(), name='book_edit'),
-###    path('delete/<int:pk>',booksdemo.views.BookDelete.as_view(), name='book_delete'),
-
 
