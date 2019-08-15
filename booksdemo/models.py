@@ -16,7 +16,8 @@ class Book(models.Model):
         (PAPERBACK, 'Paperback'),
         (EBOOK, 'E-book'),
     )
-    title = models.CharField(max_length=140, primary_key=True)
+###    title = models.CharField(max_length=140, primary_key=True)
+    title = models.CharField(max_length=140)
     author = models.CharField(max_length=100, blank=True)
     publication_date = models.DateField(null=True)
     pages = models.IntegerField(blank=True, null=True)
