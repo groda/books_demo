@@ -23,3 +23,12 @@ class Book(models.Model):
     book_type = models.PositiveSmallIntegerField(choices=BOOK_TYPES)
     abstract = models.CharField(max_length=2800)
 
+
+class Word(models.Model):
+    name = models.CharField(max_length=100)
+    book = models.ForeignKey(Book, on_delete=models.CASCADE)
+    occurrences = models.IntegerField()
+
+    class Meta:
+        unique_together = ('name', 'book',)
+
