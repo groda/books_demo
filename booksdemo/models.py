@@ -23,6 +23,9 @@ class Book(models.Model):
     book_type = models.PositiveSmallIntegerField(choices=BOOK_TYPES)
     abstract = models.CharField(max_length=2800)
 
+    def __str__(self):
+        return self.title
+
 
 class Word(models.Model):
     name = models.CharField(max_length=100)
