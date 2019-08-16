@@ -2,7 +2,7 @@
 
  - API root: https://damp-earth-36259.herokuapp.com/api/
  - get all books https://damp-earth-36259.herokuapp.com/api/books/
- - get all words for book by ID https://damp-earth-36259.herokuapp.com/api/words/?book=2
+ - vocabulary for book with ID 1: https://damp-earth-36259.herokuapp.com/api/words/?book=1
  - delete book with ID 3 `curl -X DELETE https://damp-earth-36259.herokuapp.com/api/books/3/`
  
 
@@ -40,3 +40,7 @@
 ## Add migrations
 
     git add booksdemo/migrations/*.py'
+    
+## Reset Postgres DB on Heroku
+
+    heroku pg:reset
