@@ -12,8 +12,6 @@ router.register(r'books', BookViewSet)
 router.register(r'words',WordViewSet, basename='word')
 
 urlpatterns = [
-    path("", booksdemo.views.index, name="index"),
-    path("db/", booksdemo.views.db, name="db"),
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
     url(r'^books/$', booksdemo.views.books, name='books'),

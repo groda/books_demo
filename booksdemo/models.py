@@ -1,10 +1,6 @@
 from django.db import models
 from django.db.models.signals import post_save, post_init
 
-# Create your models here.
-class Greeting(models.Model):
-    when = models.DateTimeField("date created", auto_now_add=True)
-
 class Book(models.Model):
     HARDCOVER = 1
     PAPERBACK = 2
