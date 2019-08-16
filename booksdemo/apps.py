@@ -7,5 +7,4 @@ class BooksdemoConfig(AppConfig):
  
     def ready(self):
         print("app ready")
-        import booksdemo.signals
 
