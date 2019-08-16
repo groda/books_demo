@@ -9,11 +9,12 @@ from rest_framework import generics, viewsets
 from .serializers import BookSerializer, WordSerializer
 from rest_framework.response import Response
 from collections import Counter
+from django_filters.rest_framework import DjangoFilterBackend
 
 # Create your views here.
 def index(request):
     name = os.environ.get('UNAME')
-    return HttpResponse('Hello ' + name)
+    return HttpResponse('Hello! ')
 
 def books(request):
     if request.method == 'POST':
@@ -39,7 +40,11 @@ def words(request):
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['title', 'author']
 
 class WordViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Word.objects.all()
     serializer_class = WordSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['book']
