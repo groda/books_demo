@@ -18,9 +18,12 @@ class BookSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         book = Book.objects.create(**validated_data)
         txt = validated_data.pop('abstract')
+        min_len = validated_data.pop('min_word_size')
+        Word.objects.filter(book=book).delete()
         # tokenize abstract
         for k,v in Counter(txt.split(' ')).items():
-            word = Word.objects.create(name=k, occurrences=v, book=book)
-            word.save()
+            if len(k)>=min_len:
+                word = Word.objects.create(name=k, occurrences=v, book=book)
+                word.save()
         return book
 
