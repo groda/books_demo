@@ -14,16 +14,16 @@ from django_filters.rest_framework import DjangoFilterBackend
 # Create your views here.
 def index(request):
     name = os.environ.get('UNAME')
-    return HttpResponse('Hello! ')
+    return HttpResponse('Books demo app')
 
 def books(request):
-    if request.method == 'POST':
-        # tokenize abstract
-        txt = request.POST.get('abstract').split(' ')
-        id = request.POST.get('id')
-        for k,v in Counter(txt.split(' ')).items(): 
-            word = Word(name=k, occurrences=v, book=id)
-            word.save()
+###    if request.method == 'POST':
+###        # tokenize abstract
+###        txt = request.POST.get('abstract').split(' ')
+###        id = request.POST.get('id')
+###        for k,v in Counter(txt.split(' ')).items(): 
+###            word = Word(name=k, occurrences=v, book=id)
+###            word.save()
     books = Book.objects.all()
     context = {
         'books': books
@@ -47,4 +47,4 @@ class WordViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Word.objects.all()
     serializer_class = WordSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['book']
+    filterset_fields = ['book', 'occurrences']
