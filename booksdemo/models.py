@@ -25,7 +25,11 @@ class Book(models.Model):
         return '{} by {}'.format(self.title, self.author)
     class Meta:
         unique_together = ('title', 'author',)
-
+    
+    # https://docs.djangoproject.com/en/2.2/topics/db/models/#overriding-predefined-model-methods
+    def save(self, *args, **kwargs):
+        #do_something()
+        super().save(*args, **kwargs)  # Call the "real" save() method.
 
 class Word(models.Model):
     name = models.CharField(max_length=100)
